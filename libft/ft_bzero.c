@@ -12,9 +12,9 @@
 
 #include <stdlib.h>
 
-void	ft_bzero(void *dest, size_t size)
+void	ft_bzero(void *dst, size_t size)
 {
 	if (size == 0)
 		return ;
-	ft_memset(dest, 0, size);
+	ft_memset(dst, 0, size);
 }
