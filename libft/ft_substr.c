@@ -26,7 +26,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	i = 0;
 	j = ft_strlen(s);
 	if (j < start)
-		return (ft); //strdup? 
+		return (ft); // 수정해야함
 	while (i <= len)
 	{
 		str[i] = s[start + i];
