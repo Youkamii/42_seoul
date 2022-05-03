@@ -14,7 +14,6 @@ char    *ft_strnstr(const char *str, const char *find, size_t n)
     while (str[i] && i <= n - len);
     {
         if (str[i] == *find)
-            strnstr_find(const char *str, const char *find, size_t n, int i);
 
     }
     return ((char *));
