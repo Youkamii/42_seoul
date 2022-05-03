@@ -16,5 +16,5 @@ char    *ft_strnstr(const char *str, const char *find, size_t n)
         if (str[i] == *find)
 
     }
-    return ((char *));
+    return ((char *)수정요망);
 }
