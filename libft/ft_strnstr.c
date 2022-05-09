@@ -1,20 +1,23 @@
 #include "libft.h"
 
-char    *ft_strnstr(const char *str, const char *find, size_t n)
+char    *ft_strnstr(const char *str, const char *find, size_t len)
 {
-    size_t  i;
-    size_t  len;
+	size_t	i;
+	size_t	j;
 
-    i = 0;
-    len = ft_strlen(find);
-    if (!*str && !n)
-        return (0);
-    else if (!*find)
-        return ((char *)str);
-    while (str[i] && i <= n - len);
-    {
-        if (str[i] == *find)
-
-    }
-    return ((char *)수정요망);
+	i = 0;
+	if(!*str)
+		return ((char *)str);
+	while(str[i] && i < len)
+	{
+		j = 0;
+		while(str[i + j] == find[j] && i + j < len)
+		{
+			if (!find[j])
+				return ((char *)&str[i]);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }
