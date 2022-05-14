@@ -14,5 +14,20 @@
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	return ;
+	size_t	i;
+	size_t	len;
+	char	*res;
+
+	if (!(s1 && set))
+		return (0);
+	i = 0;
+	len = ft_strlen(s1);
+	while (s1[i] && ft_strchr(set, s1[i]))
+		i++;
+	while (len && s1[len - 1] && ft_strchr(set, s1[len - 1]))
+		len--;
+	res = (char *)malloc(sizeof(char) * (len - i + 1));
+	if (!res)
+		return (NULL);
+	return (res);
 }
