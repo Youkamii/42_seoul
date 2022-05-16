@@ -18,16 +18,25 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	len;
 	char	*res;
 
-	if (!(s1 && set))
+	if (!s1)
 		return (0);
+	else if (!set)
+		return (my_strdup(s1));
 	i = 0;
 	len = ft_strlen(s1);
 	while (s1[i] && ft_strchr(set, s1[i]))
 		i++;
 	while (len && s1[len - 1] && ft_strchr(set, s1[len - 1]))
+	{
+		if (len - 1 < 1)
+			break;
 		len--;
+	}
+	if (i > len)
+		return (0);
 	res = (char *)malloc(sizeof(char) * (len - i + 1));
 	if (!res)
 		return (NULL);
+	ft_strlcpy(res, s1[i], len - i + 1);
 	return (res);
 }
