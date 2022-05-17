@@ -11,37 +11,37 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-int	cipher(int nbr)
+int	cipher(long int nbr)
 {
-	int	tmp_nbr;
 	int	cip;
 
-	tmp_nbr = nbr;
-	cip = 1;
-	if (tmp_nbr < 0)
-	{
-		nbr *= -1;
+	cip = 0;
+	if (nbr <= 0)
 		cip++;
-	}
-	while (tmp_nbr >= 10)
+	while (nbr)
 	{
-		tmp_nbr /= 10;
+		nbr /= 10;
 		cip++;
 	}
 	return (cip);
 }
 
-void	itoa(char *str, int nbr, int size)
+void	iitoa(char *str, long int nbr, int size)
 {
+	if (nbr == 0)
+	{
+		str[0] = '0';
+	}
 	if (nbr / 10 != 0)
-		itoa(str, nbr / 10, size - 1);
+		iitoa(str, nbr / 10, size - 1);
 	else
 	{
 		*(str + size) = nbr + '0';
 		return ;
 	}
-	itoa (str, nbr % 10, size);
+	iitoa (str, nbr % 10, size);
 }
 
 char	*ft_itoa(int nbr)
@@ -60,7 +60,18 @@ char	*ft_itoa(int nbr)
 		str[0] = '-';
 		tmp_nbr *= -1;
 	}
-	make_str(str, tmp_nbr, size - 1);
+	iitoa(str, tmp_nbr, size - 1);
 	str[size] = '\0';
 	return (str);
+}
+
+int main()
+{
+	printf("%s\n", ft_itoa(0));
+	printf("%s\n", ft_itoa(987654321));
+	printf("%s\n", ft_itoa(-123456789));
+	printf("%s\n", ft_itoa(1234567890));
+	printf("%s\n", ft_itoa(-1239));
+	printf("%s\n", ft_itoa(-1));
+	printf("%s\n", ft_itoa(-911));
 }
