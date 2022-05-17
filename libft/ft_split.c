@@ -52,4 +52,3 @@ char	**ft_split(char const *s, char c)
 	split_body(s, c, result, size);
 	return (result);
 }
-
