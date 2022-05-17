@@ -64,14 +64,3 @@ char	*ft_itoa(int nbr)
 	str[size] = '\0';
 	return (str);
 }
-
-int main()
-{
-	printf("%s\n", ft_itoa(0));
-	printf("%s\n", ft_itoa(987654321));
-	printf("%s\n", ft_itoa(-123456789));
-	printf("%s\n", ft_itoa(1234567890));
-	printf("%s\n", ft_itoa(-1239));
-	printf("%s\n", ft_itoa(-1));
-	printf("%s\n", ft_itoa(-911));
-}
