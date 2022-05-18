@@ -12,6 +12,8 @@
 
 #include <stdlib.h>
 
+void	ft_bzero(void *dst, size_t size);
+
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*tmp;

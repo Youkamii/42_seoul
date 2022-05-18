@@ -12,14 +12,18 @@
 
 #include "libft.h"
 
+int		ft_strlen(const char *str);
+size_t	ft_strlcat(char *dest, const char *src, size_t size);
+size_t	ft_strlcpy(char *dest, const char *src, size_t size);
+
 char	*ft_strjoin(char const *str1, char const *str2)
 {
 	char	*tmp_str;
 	size_t	len_str1;
 	size_t	len_str2;
 
-	len_str1 = ft_strlen(str1);
-	len_str2 = ft_strlen(str2);
+	len_str1 = ft_strlen(*str1);
+	len_str2 = ft_strlen(*str2);
 	if (!str1 || !str2)
 		return (NULL);
 	tmp_str = (char *)malloc(sizeof(char) *(len_str1 + len_str2 + 1));
