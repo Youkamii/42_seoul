@@ -12,43 +12,84 @@
 
 #include "libft.h"
 
-int	count_word(char const *s, char c)
+int	ft_match(char c, char *charset)
 {
-	size_t	count;
-	size_t	i;
+	int	i;
 
 	i = 0;
-	count = 0;
-	while (s[i])
+	while (charset[i] != '\0')
 	{
-		if (s[i] == c)
-			i++;
-		else
-		{
-			count++;
-			while (s[i] && s[i] != c)
-				i++;
-		}
+		if (charset[i] == c)
+			return (1);
+		i++;
 	}
-	return (count);
+	return (0);
 }
 
-char	**split_body(s, c, result, size)
+int	ft_matching(char *src, char *charset, int i)
 {
-	return (result);
+	if (src[i - 1] && src[i + 1]
+		&& !ft_match(src[i + 1], charset) && ft_match(src[i], charset))
+		return (1);
+	return (0);
 }
 
-char	**ft_split(char const *s, char c)
+int	ft_how_many(char *src, char *charset)
 {
-	size_t	**result;
-	size_t	size;
+	int	i;
+	int	res;
 
-	if (!s)
-		return (NULL);
-	size = count_word(s, c);
-	result = (char **)malloc(sizeof(char *) * (size + 1));
-	if (!result)
-		return (NULL);
-	split_body(s, c, result, size);
-	return (result);
+	i = 0;
+	res = 0;
+	while (ft_match(src[i], charset))
+		i++;
+	if (!src[i])
+		return (0);
+	while (src[i])
+	{
+		if (ft_matching(src, charset, i))
+			res++;
+		i++;
+	}
+	res++;
+	return (res);
+}
+
+int	ft_each_len(char *str, char *charset, int j)
+{
+	int	i;
+
+	i = 0;
+	while (!ft_matching(str, charset, i + j) && str[i + j])
+		i++;
+	return (i);
+}
+
+char	**ft_split(char *str, char *charset)
+{
+	char	**res;
+	int		i;
+	int		j;
+	int		k;
+
+	res = malloc(sizeof(char *) * (ft_how_many(str, charset) + 1));
+	i = 0;
+	j = 0;
+	while (i < ft_how_many(str, charset))
+	{
+		k = 0;
+		while (ft_match(str[j], charset))
+			j++;
+		res[i] = malloc(sizeof(char) * (ft_each_len(str, charset, j) + 1));
+		while (!ft_matching(str, charset, j) && str[j])
+		{
+			if (!ft_match(str[j], charset))
+				res[i][k++] = str[j];
+			j++;
+		}
+		j += 1;
+		res[i++][k] = '\0';
+	}
+	res[i] = 0;
+	return (res);
 }

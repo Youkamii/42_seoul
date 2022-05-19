@@ -18,16 +18,16 @@ char	*ft_strnstr(const char *str, const char *find, size_t len)
 	size_t	j;
 
 	i = 0;
-	if (!*str)
+	if (!*find)
 		return ((char *)str);
 	while (str[i] && i < len)
 	{
 		j = 0;
 		while (str[i + j] == find[j] && i + j < len)
 		{
+			j++;
 			if (!find[j])
 				return ((char *)&str[i]);
-			j++;
 		}
 		i++;
 	}

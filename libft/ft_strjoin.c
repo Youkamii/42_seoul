@@ -10,26 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
-int		ft_strlen(const char *str);
-size_t	ft_strlcat(char *dest, const char *src, size_t size);
-size_t	ft_strlcpy(char *dest, const char *src, size_t size);
-
-char	*ft_strjoin(char const *str1, char const *str2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*tmp_str;
-	size_t	len_str1;
-	size_t	len_str2;
+	char	*str;
+	size_t	s1_len;
+	size_t	s2_len;
 
-	len_str1 = ft_strlen(*str1);
-	len_str2 = ft_strlen(*str2);
-	if (!str1 || !str2)
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	if (!s1 && !s2)
 		return (NULL);
-	tmp_str = (char *)malloc(sizeof(char) *(len_str1 + len_str2 + 1));
-	if (!tmp_str)
-		return (NULL);
-	ft_strlcpy(tmp_str, str1, len_str1 + 1);
-	ft_strlcat(tmp_str, str2, len_str2 + 1);
-	return (tmp_str);
+	str = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
+	if (!str)
+		return (0);
+	ft_memcpy(str, s1, s1_len);
+	ft_memcpy(str + s1_len, s2, s2_len);
+	str[s1_len + s2_len] = '\0';
+	return (str);
 }

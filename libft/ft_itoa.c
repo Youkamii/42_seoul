@@ -17,7 +17,9 @@ int	cipher(long int nbr)
 	int	cip;
 
 	cip = 0;
-	if (nbr <= 0)
+	if (nbr == 0)
+		return (1);
+	else if (nbr < 0)
 		cip++;
 	while (nbr)
 	{
@@ -27,39 +29,31 @@ int	cipher(long int nbr)
 	return (cip);
 }
 
-void	iitoa(char *str, long int nbr, int size)
-{
-	if (nbr == 0)
-	{
-		str[0] = '0';
-	}
-	if (nbr / 10 != 0)
-		iitoa(str, nbr / 10, size - 1);
-	else
-	{
-		*(str + size) = nbr + '0';
-		return ;
-	}
-	iitoa (str, nbr % 10, size);
-}
-
 char	*ft_itoa(int nbr)
 {
-	int		size;
-	char	*str;
-	int		tmp_nbr;
+	char		*str;
+	size_t		len;
+	long long	res;
 
-	size = cipher(nbr);
-	str = (char *)malloc(sizeof(char) * (size + 1));
-	if (!str)
-		return (NULL);
-	tmp_nbr = nbr;
-	if (tmp_nbr < 0)
+	len = cipher(nbr);
+	res = (long long)nbr;
+	str = (char *)malloc(sizeof(char) * (len) + 1);
+	if (str == 0)
+		return (0);
+	if (res < 0)
 	{
 		str[0] = '-';
-		tmp_nbr *= -1;
+		res *= -1;
 	}
-	iitoa(str, tmp_nbr, size - 1);
-	str[size] = '\0';
+	else if (res == 0)
+		str[0] = '0';
+	str[len] = 0;
+	len -= 1;
+	while (res)
+	{
+		str[len] = res % 10 + '0';
+		res /= 10;
+		len--;
+	}
 	return (str);
 }

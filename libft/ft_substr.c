@@ -13,25 +13,19 @@
 #include <stdlib.h>
 #include "libft.h"
 
-int	ft_strlen(const char *str);
-
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char			*str;
-	size_t			size;
-	size_t			i;
 
 	if (!s)
-		return (0);
-	str = malloc(sizeof(char) * (len + 1));
+		return (NULL);
+	if ((unsigned int)ft_strlen(s) <= start)
+		return (ft_strdup(""));
+	if ((unsigned int)ft_strlen(s + start) < len)
+		len = ft_strlen(s + start);
+	str = (char *)malloc(sizeof(char *) * (len + 1));
 	if (!str)
-		return (0);
-	size = ft_strlen(s);
-	i = 0;
-	while (i < len && start + i < size)
-	{
-		str[i] = s[start + i];
-		i++;
-	}
+		return (NULL);
+	ft_strlcpy(str, s + start, len + 1);
 	return (str);
 }

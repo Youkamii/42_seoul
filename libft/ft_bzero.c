@@ -13,8 +13,6 @@
 #include <stdlib.h>
 #include "libft.h"
 
-void	*ft_memset(void *dest, int c, size_t len);
-
 void	ft_bzero(void *dst, size_t size)
 {
 	if (size == 0)
