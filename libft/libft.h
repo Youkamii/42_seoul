@@ -6,7 +6,7 @@
 /*   By: chyeok <chyeok@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 14:24:33 by chyeok            #+#    #+#             */
-/*   Updated: 2022/03/14 14:24:36 by chyeok           ###   ########.fr       */
+/*   Updated: 2022/05/20 06:11:22 by chyeok           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ void				ft_putchar_fd(char c, int fd);
 void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 void				ft_putstr_fd(char *s, int fd);
-char				**ft_split(char *str, char *charset);
+char				**ft_split(char const *s, char c);
 char				*ft_strchr(const char *str, int c);
 char				*ft_strdup(const char *str);
 char				*ft_strjoin(char const *str1, char const *str2);
 size_t				ft_strlcat(char *dest, const char *src, size_t size);
 size_t				ft_strlcpy(char *dest, const char *src, size_t size);
-int					ft_strlen(const char *str);
+size_t				ft_strlen(const char *str);
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void				ft_striteri(char *s, void (*f)(unsigned int, char*));
 int					ft_strncmp(const char *str1, const char *str2, size_t n);

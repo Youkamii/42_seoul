@@ -6,17 +6,15 @@
 /*   By: chyeok <chyeok@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 14:41:41 by chyeok            #+#    #+#             */
-/*   Updated: 2022/05/14 14:41:44 by chyeok           ###   ########.fr       */
+/*   Updated: 2022/05/20 03:47:05 by chyeok           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
 int	ft_atoi(const char *str)
 {
-	int			i;
-	int			sign;
-	long long	res;
+	int		i;
+	int		sign;
+	long	res;
 
 	i = 0;
 	sign = 1;

@@ -6,16 +6,16 @@
 /*   By: chyeok <chyeok@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 14:47:40 by chyeok            #+#    #+#             */
-/*   Updated: 2022/05/14 14:47:43 by chyeok           ###   ########.fr       */
+/*   Updated: 2022/05/20 04:13:12 by chyeok           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stddef.h>
 
 int	ft_memcmp(const void *dest, const void *src, size_t size)
 {
-	unsigned char	*i;
-	unsigned char	*j;
+	const unsigned char	*i;
+	const unsigned char	*j;
 
 	i = (unsigned char *)dest;
 	j = (unsigned char *)src;

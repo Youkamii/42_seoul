@@ -6,7 +6,7 @@
 #    By: chyeok <chyeok@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/14 14:21:00 by chyeok            #+#    #+#              #
-#    Updated: 2022/03/14 14:21:05 by chyeok           ###   ########.fr        #
+#    Updated: 2022/05/20 03:17:50 by chyeok           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,16 +57,14 @@ $(NAME)		:	$(OBJS)
 
 all	:	$(NAME)
 
-bonus	:	$(NAME)
-		gcc $(FLAGS) -c $(BNS_SRCS) -I./
-		ar rc $(NAME) $(BNS_OBJS)
-
 clean	:
-		rm -f $(OBJS) $(BNS_OBJS)
+		rm -f $(OBJS)
 
 fclean	:	clean
 		rm -f $(NAME)
 
-re	:	fclean all
+re	:	
+		make fclean
+		make all
 
 .PHONY	:	all clean fclean re

@@ -6,90 +6,82 @@
 /*   By: chyeok <chyeok@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 14:53:40 by chyeok            #+#    #+#             */
-/*   Updated: 2022/05/14 14:53:41 by chyeok           ###   ########.fr       */
+/*   Updated: 2022/05/20 07:13:44 by chyeok           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_match(char c, char *charset)
+static int	ft_split_elem(char **ptr, char const *s, char c)
 {
-	int	i;
-
-	i = 0;
-	while (charset[i] != '\0')
-	{
-		if (charset[i] == c)
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int	ft_matching(char *src, char *charset, int i)
-{
-	if (src[i - 1] && src[i + 1]
-		&& !ft_match(src[i + 1], charset) && ft_match(src[i], charset))
-		return (1);
-	return (0);
-}
-
-int	ft_how_many(char *src, char *charset)
-{
-	int	i;
-	int	res;
-
-	i = 0;
-	res = 0;
-	while (ft_match(src[i], charset))
-		i++;
-	if (!src[i])
-		return (0);
-	while (src[i])
-	{
-		if (ft_matching(src, charset, i))
-			res++;
-		i++;
-	}
-	res++;
-	return (res);
-}
-
-int	ft_each_len(char *str, char *charset, int j)
-{
-	int	i;
-
-	i = 0;
-	while (!ft_matching(str, charset, i + j) && str[i + j])
-		i++;
-	return (i);
-}
-
-char	**ft_split(char *str, char *charset)
-{
-	char	**res;
 	int		i;
-	int		j;
-	int		k;
+	char	*elem;
 
-	res = malloc(sizeof(char *) * (ft_how_many(str, charset) + 1));
-	i = 0;
-	j = 0;
-	while (i < ft_how_many(str, charset))
+	while (*s)
 	{
-		k = 0;
-		while (ft_match(str[j], charset))
-			j++;
-		res[i] = malloc(sizeof(char) * (ft_each_len(str, charset, j) + 1));
-		while (!ft_matching(str, charset, j) && str[j])
+		if (*s == c)
+			s++;
+		else
 		{
-			if (!ft_match(str[j], charset))
-				res[i][k++] = str[j];
-			j++;
+			i = 0;
+			while (s[i] && s[i] != c)
+				i++;
+			elem = ft_calloc(i + 1, sizeof(char));
+			*ptr++ = elem;
+			if (elem == NULL)
+				return (0);
+			while (*s && *s != c)
+				*elem++ = *s++;
+			*elem = '\0';
 		}
-		j += 1;
-		res[i++][k] = '\0';
 	}
-	res[i] = 0;
-	return (res);
+	*ptr = NULL;
+	return (1);
+}
+
+static char	**ft_free(char **ptr)
+{
+	char	**str;
+
+	if (ptr)
+	{
+		str = ptr;
+		while (*str)
+		{
+			free(*str);
+			*str++ = NULL;
+		}
+		free(ptr);
+		ptr = NULL;
+	}
+	return (ptr);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**result;
+	int		cnt;
+	int		on_elem;
+	int		i;
+
+	if (!s)
+		return (NULL);
+	cnt = 0;
+	on_elem = 0;
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == c)
+			on_elem = 0;
+		else if (!on_elem)
+		{
+			cnt++;
+			on_elem = 1;
+		}
+		i++;
+	}
+	result = ft_calloc(cnt + 1, sizeof(char *));
+	if (result == NULL || !ft_split_elem(result, s, c))
+		return (ft_free(result));
+	return (result);
 }

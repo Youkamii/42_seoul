@@ -6,19 +6,19 @@
 /*   By: chyeok <chyeok@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 19:39:52 by chyeok            #+#    #+#             */
-/*   Updated: 2022/03/15 19:39:53 by chyeok           ###   ########.fr       */
+/*   Updated: 2022/05/20 06:05:38 by chyeok           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <stddef.h>
 
 void	*ft_memmove(void *dest, const void *src, size_t size)
 {
-	char	*tmp_dest;
-	char	*tmp_src;
-	size_t	i;
+	char		*tmp_dest;
+	const char	*tmp_src;
+	size_t		i;
 
-	if (dest == src || size == 0)
+	if (dest == src || !size)
 		return (dest);
 	tmp_src = (char *)src;
 	tmp_dest = (char *)dest;

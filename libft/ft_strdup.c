@@ -6,16 +6,16 @@
 /*   By: chyeok <chyeok@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 14:58:10 by chyeok            #+#    #+#             */
-/*   Updated: 2022/05/14 14:58:11 by chyeok           ###   ########.fr       */
+/*   Updated: 2022/05/20 04:20:37 by chyeok           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
 char	*ft_strdup(const char *s)
 {
-	int		i;
-	int		len;
+	size_t	i;
+	size_t	len;
 	char	*new_s;
 
 	i = 0;
