@@ -47,7 +47,19 @@ SRCS					= ft_atoi.c \
 	ft_toupper.c \
 	ft_striteri.c
 
+BNS_SRCS				= ft_lstsize.c \
+	ft_lstadd_back.c \
+	ft_lstadd_front.c \
+	ft_lstclear.c \
+	ft_lstdelone.c \
+	ft_lstiter.c \
+	ft_lstlast.c \
+	ft_lstmap.c \
+	ft_lstnew.c
+
 OBJS					= $(SRCS:%.c=%.o)
+
+BNS_OBJS				= $(BNS_SRCS:%.c=%.o)
 
 FLAGS					= -Wall -Wextra -Werror
 
@@ -57,13 +69,17 @@ $(NAME)		:	$(OBJS)
 
 all	:	$(NAME)
 
+bonus	:	$(NAME)
+		gcc $(FLAGS) -c $(BNS_SRCS) -I./
+		ar rc $(NAME) $(BNS_OBJS)
+
 clean	:
 		rm -f $(OBJS)
 
 fclean	:	clean
 		rm -f $(NAME)
 
-re	:	
+re	:
 		make fclean
 		make all
 
