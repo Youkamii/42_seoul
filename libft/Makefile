@@ -61,26 +61,31 @@ OBJS					= $(SRCS:%.c=%.o)
 
 BNS_OBJS				= $(BNS_SRCS:%.c=%.o)
 
-FLAGS					= -Wall -Wextra -Werror
+OBJS		= $(SRCS:.c=.o)
+BNS_OBJS	= $(SRCS_bonus:.c=.o)
 
-$(NAME)		:	$(OBJS)
-			gcc $(FLAGS) -c $(SRCS) -I./
-			ar rc $(NAME) $(OBJS)
+CC 			= gcc
+CFLAGS		= -g3 -Wall -Wextra -Werror
+dbCFLAGS	= -Wall -Wextra -Werror -g3 -fsanitize=address
 
-all	:	$(NAME)
+RM			= rm -rf
 
-bonus	:	$(NAME)
-		gcc $(FLAGS) -c $(BNS_SRCS) -I./
-		ar rc $(NAME) $(BNS_OBJS)
+NAME		= libft.a
 
-clean	:
-		rm -f $(OBJS)
+$(NAME)		: $(OBJS)
+				ar rs $(NAME) $(OBJS)
 
-fclean	:	clean
-		rm -f $(NAME)
+all			: bonus
 
-re	:
-		make fclean
-		make all
+bonus		: $(NAME) $(BNS_OBJS)
+				ar rs $(NAME) $(BNS_OBJS)
 
-.PHONY	:	all clean fclean re
+clean		:
+				$(RM) $(OBJS) $(BNS_OBJS)
+
+fclean		: clean
+				$(RM) *.out* $(NAME) *.gch
+
+re			: fclean $(NAME)
+
+.PHONY		: run all clean fclean re
