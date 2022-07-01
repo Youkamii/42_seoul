@@ -47,19 +47,43 @@ SRCS					= ft_atoi.c \
 	ft_toupper.c \
 	ft_striteri.c
 
+BNS_SRCS				= ft_lstsize.c \
+	ft_lstadd_back.c \
+	ft_lstadd_front.c \
+	ft_lstclear.c \
+	ft_lstdelone.c \
+	ft_lstiter.c \
+	ft_lstlast.c \
+	ft_lstmap.c \
+	ft_lstnew.c
+
 OBJS					= $(SRCS:%.c=%.o)
 
-FLAGS					= -Wall -Wextra -Werror
+BNS_OBJS				= $(BNS_SRCS:%.c=%.o)
 
-$(NAME)		:	$(OBJS)
-			gcc $(FLAGS) -c $(SRCS) -I./
-			ar rc $(NAME) $(OBJS)
+OBJS		= $(SRCS:.c=.o)
+BNS_OBJS	= $(SRCS_bonus:.c=.o)
 
-all	:	$(NAME)
+CC 			= gcc
+CFLAGS		= -g3 -Wall -Wextra -Werror
+dbCFLAGS	= -Wall -Wextra -Werror -g3 -fsanitize=address
 
-clean	:
-		rm -f $(OBJS)
+RM			= rm -rf
 
+NAME		= libft.a
+
+$(NAME)		: $(OBJS)
+				ar rs $(NAME) $(OBJS)
+
+all			: bonus
+
+bonus		: $(NAME) $(BNS_OBJS)
+				ar rs $(NAME) $(BNS_OBJS)
+
+clean		:
+				$(RM) $(OBJS) $(BNS_OBJS)
+
+<<<<<<< HEAD
 bonus	:	$(NAME)
 		gcc $(FLAGS) -c $(BNS_SRCS) -I./
 		ar rc $(NAME) $(BNS_OBJS)
@@ -70,5 +94,11 @@ fclean	:	clean
 re	:
 		make fclean
 		make all
+=======
+fclean		: clean
+				$(RM) *.out* $(NAME) *.gch
 
-.PHONY	:	all clean fclean re
+re			: fclean $(NAME)
+>>>>>>> 507261cb3cceb07365f8339c8bbdfd9fa7936b32
+
+.PHONY		: run all clean fclean re
