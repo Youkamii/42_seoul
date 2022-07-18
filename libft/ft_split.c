@@ -85,3 +85,27 @@ char	**ft_split(char const *s, char c)
 		return (ft_free(result));
 	return (result);
 }
+
+
+
+1시
+
+2시
+	마트 다녀오기
+3시
+
+	c언어 공부 및 인강 보기
+
+6시
+	아마 가족 저녁식사 시간
+7시
+	printf 구현 작업
+8시
+
+8시 30
+	휴식시간
+9시 - zep 모임
+
+-
+
+12시 - 수면 예정
