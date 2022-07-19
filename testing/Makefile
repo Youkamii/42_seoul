@@ -1,14 +1,14 @@
 NAME	= libftprintf.a
 
 CC		= gcc
-CFLAG	= -Wall -Wextra -Werror -D BUFFER_SIZE=42 
+CFLAG	= -Wall -Wextra -Werror -D BUFFER_SIZE=42
 
 RM		= rm -f
 
 AR		= ar
 ARFLAGS	= crs
 
-INCLUDES	= ./ft_printf.h 
+INCLUDES	= ./ft_printf.h
 
 SRCS	= ft_printf.c	\
 		  ft_printf_utils.c	\
