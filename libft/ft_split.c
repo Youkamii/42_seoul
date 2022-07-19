@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "libft.h"
 
 static int	ft_split_elem(char **ptr, char const *s, char c)
