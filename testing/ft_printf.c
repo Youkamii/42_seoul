@@ -10,9 +10,9 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-int	ft_putchar_fd(char c, int fd)
+int	ft_putchar_fd(char c)
 {
-	write(fd, &c, 1);
+	write(1, &c, 1);
 	return (1);
 }
 
@@ -22,23 +22,23 @@ int	ft_format(va_list ap, const char format)
 
 	fd = 1;
 	if (format == 'c')
-		return (ft_putchar_fd(va_arg(ap, int), fd));
+		return (ft_putchar_fd(va_arg(ap, int)));
 	if (format == 's')
-		return (ft_putstr_fd(va_arg(ap, char *), fd));
+		return (ft_putstr_fd(va_arg(ap, char *)));
 	if (format == 'p')
-		return (ft_putptr_fd(va_arg(ap, void *), fd));
+		return (ft_putptr_fd(va_arg(ap, void *)));
 	if (format == 'd' || format == 'i')
-		return (ft_putnbr_fd(va_arg(ap, int), fd));
+		return (ft_putnbr_fd(va_arg(ap, int)));
 	if (format == 'u')
-		return (ft_putnbr_fd_u(va_arg(ap, unsigned int), fd, "0123456789", 10));
+		return (ft_putnbr_fd_u(va_arg(ap, unsigned int), "0123456789", 10));
 	if (format == 'x')
-		return (ft_putnbr_fd_u(va_arg(ap, unsigned int), fd, \
+		return (ft_putnbr_fd_u(va_arg(ap, unsigned int), \
 		"0123456789abcdef", 16));
 	if (format == 'X')
-		return (ft_putnbr_fd_u(va_arg(ap, unsigned int), fd, \
+		return (ft_putnbr_fd_u(va_arg(ap, unsigned int), \
 		"0123456789ABCDEF", 16));
 	if (format == '%')
-		return (ft_putchar_fd('%', fd));
+		return (ft_putchar_fd('%'));
 	return (0);
 }
 
