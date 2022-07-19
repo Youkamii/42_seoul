@@ -60,12 +60,6 @@ int	ft_printf(const char *format, ...)
 		i++;
 	}
 	va_end(ap);
-	return (len);
-}
-
-int	main(void)
-{
-	ft_printf("%c", "123");
-	return (0);
+	return (len + 1);
 }
 
