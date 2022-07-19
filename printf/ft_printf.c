@@ -6,13 +6,13 @@
 /*   By: liachoi <liachoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 21:12:14 by chyeok            #+#    #+#             */
-/*   Updated: 2022/07/19 12:44:56 by liachoi          ###   ########.fr       */
+/*   Updated: 2022/07/20 07:35:34 by chyeok           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_format_spc(va_list ap, const char format)
+int	ft_format_type(va_list ap, const char format)
 {
 	if (format == 'c')
 		return (ft_putchar(va_arg(ap, int)));
@@ -49,7 +49,7 @@ int	ft_printf(const char *format, ...)
 		{
 			if (format[i] == '%')
 			{
-				res += ft_format_spc(ap, format[i + 1]);
+				res += ft_format_type(ap, format[i + 1]);
 				cur++;
 			}
 			else
