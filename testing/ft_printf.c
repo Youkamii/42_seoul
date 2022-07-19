@@ -18,9 +18,6 @@ int	ft_putchar_fd(char c)
 
 int	ft_format(va_list ap, const char format)
 {
-	int	fd;
-
-	fd = 1;
 	if (format == 'c')
 		return (ft_putchar_fd(va_arg(ap, int)));
 	if (format == 's')
@@ -61,7 +58,7 @@ int	ft_printf(const char *format, ...)
 		else
 			len += ft_putchar_fd(format[i], 1);
 		i++;
-	}	
+	}
 	va_end(ap);
 	return (len);
 }
