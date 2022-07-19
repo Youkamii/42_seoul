@@ -56,7 +56,7 @@ int	ft_printf(const char *format, ...)
 			i++;
 		}
 		else
-			len += ft_putchar_fd(format[i], 1);
+			len += ft_putchar_fd(format[i]);
 		i++;
 	}
 	va_end(ap);
