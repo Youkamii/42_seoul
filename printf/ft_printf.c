@@ -12,15 +12,7 @@
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *str, ...)
-{
-	int	i;
-	int	len;
-
-	return (len);
-}
-
-int	ft_format(va_list args, const char format)
+int	ft_format_spc(va_list args, const char format)
 {
 	int	i;
 
@@ -44,5 +36,24 @@ int	ft_format(va_list args, const char format)
 int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
-	
+	size_t	cur;
+	int		res;
+
+	res = 0;
+	if (format == NULL)
+		return (-1);
+	else
+	{
+		while (format[i])
+		{
+			if (format[i] == '%')
+			{
+				res += 
+			}
+			cur++;
+		}
+	}
+	va_start(ap, format);
+	va_end(ap);
+	return (res);
 }
