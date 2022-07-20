@@ -23,9 +23,9 @@ ARFLAGS	= crs
 INCLUDES	= ./ft_printf.h
 
 SRCS	= ft_printf.c	\
-		  ft_putchar.c
-		  ft_strlen.c
-		  ft_printf_parts.c\
+		  ft_putchar.c	\
+		  ft_strlen.c	\
+		  ft_printf_parts.c
 
 OBJS	= $(SRCS:.c=.o)
 
