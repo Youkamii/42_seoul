@@ -43,11 +43,11 @@ int	ft_putnbr(int n)
 
 	i = 0;
 	if (n == -2147483648)
-		return (ft_putstr_fd("-2147483648"));
+		return (ft_putstr("-2147483648"));
 	else if (n < 0)
 	{
 		write(1, "-", 1);
-		i += ft_putnbr_fd(-n) + 1;
+		i += ft_putnbr(-n) + 1;
 	}
 	else
 	{
