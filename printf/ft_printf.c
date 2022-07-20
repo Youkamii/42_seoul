@@ -12,6 +12,12 @@
 
 #include "ft_printf.h"
 
+int	ft_putchar(char c)
+{
+	write (1, &c, 1);
+	return (1);
+}
+
 int	ft_format_type(va_list ap, const char format)
 {
 	if (format == 'c')
@@ -20,6 +26,8 @@ int	ft_format_type(va_list ap, const char format)
 		return (ft_putstr(va_arg(ap, char *)));
 	else if (format == 'p')
 		return (ft_putptr(va_arg(ap, void *)));
+	else if (format == 'u')
+		return (ft_putnbr_fd_u(va_arg(ap, unsigned int), "0123456789", 10));
 	else if (format == 'x')
 		return (ft_putnbr(va_arg(ap, unsigned int), \
 		"0123456789abcdef", 16));
@@ -36,27 +44,23 @@ int	ft_format_type(va_list ap, const char format)
 int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
-	size_t	cur;
-	int		res;
+	size_t	i;
+	int		count;
 
-	res = 0;
+	i = 0;
+	count = 0;
 	va_start(ap, format);
-	if (format == NULL)
-		return (-1);
-	else
+	while (format[i])
 	{
-		while (format[i])
+		if (format[i] == '%')
 		{
-			if (format[i] == '%')
-			{
-				res += ft_format_type(ap, format[i + 1]);
-				cur++;
-			}
-			else
-				res += ft_putchar(format[i]);
-			cur++;
+			count += ft_format_type(ap, format[i + 1]);
+			i++;
 		}
+		else
+			count += ft_putchar(format[i]);
+		i++;
 	}
 	va_end(ap);
-	return (res);
+	return (count);
 }

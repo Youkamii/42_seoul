@@ -18,5 +18,9 @@
 # include <unistd.h>
 
 int		ft_printf(const char *format, ...);
+int		ft_format_type(va_list ap, const char format);
+int		ft_putchar(char c);
+
+
 
 #endif
