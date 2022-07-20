@@ -6,7 +6,7 @@
 #    By: chyeok <chyeok@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/01 21:09:32 by chyeok            #+#    #+#              #
-#    Updated: 2022/07/01 21:09:34 by chyeok           ###   ########.fr        #
+#    Updated: 2022/07/20 10:39:43 by chyeok           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ INCLUDES	= ./ft_printf.h
 SRCS	= ft_printf.c	\
 		  ft_putchar.c	\
 		  ft_strlen.c	\
-		  ft_printf_parts.c
+		  ft_printf_parts.c	\
+		  main.c
 
 OBJS	= $(SRCS:.c=.o)
 
