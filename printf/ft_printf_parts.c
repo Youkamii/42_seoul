@@ -32,6 +32,8 @@ int ft_putstr(char *s)
 		return (6);
 	}
 	i = ft_strlen(s);
+	write(1, s, 1);
+	return (i);
 }
 
 void	ft_putstr_fd(char *s, int fd)
