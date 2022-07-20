@@ -6,21 +6,19 @@
 #    By: chyeok <chyeok@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/01 21:09:32 by chyeok            #+#    #+#              #
-#    Updated: 2022/07/20 10:39:43 by chyeok           ###   ########.fr        #
+#    Updated: 2022/07/01 21:09:34 by chyeok           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= libftprintf.a
+NAME = libftprintf.a
+LIBFT = libft
+LIBFT_a = libft.a
 
-CC		= gcc
-CFLAG	= -Wall -Wextra -Werror -D BUFFER_SIZE=42
-
-RM		= rm -f
-
-AR		= ar
-ARFLAGS	= crs
-
-INCLUDES	= ./ft_printf.h
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -c
+RM = rm -f
+AR = ar
+CRS = crs
 
 SRCS	= ft_printf.c	\
 		  ft_putchar.c	\
@@ -28,22 +26,26 @@ SRCS	= ft_printf.c	\
 		  ft_printf_parts.c	\
 		  main.c
 
-OBJS	= $(SRCS:.c=.o)
+OBJS = $(SRCS:.c=.o)
 
-all : $(NAME)
+all: $(NAME)
 
-%.o : %.c
-	$(CC) $(CFLAG) -c $< -o $@
+%.o: %.c
+		$(CC) $(CFLAGS) $< -o $@
 
-clean :
-	$(RM) $(OBJS)
+$(NAME): $(OBJS)
+		make all -C $(LIBFT)/
+		cp $(LIBFT)/$(LIBFT_a) $(NAME)
+		$(AR) $(CRS) $@ $(OBJS)
 
-fclean : clean
-	$(RM) $(NAME)
+clean:
+		$(RM) $(OBJS)
+		make clean -C $(LIBFT)
 
-re : fclean all
+fclean: clean
+		$(RM) $(NAME)
+		make fclean -C $(LIBFT)
 
-$(NAME) : $(OBJS)
-	$(AR) $(ARFLAGS) $@ $^
+re: fclean all
 
- .PHONY : all clean fclean re
+.PHONY: fclean all clean re

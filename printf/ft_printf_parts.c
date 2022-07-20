@@ -12,6 +12,12 @@
 
 #include "ft_printf.h"
 
+SRCS	= ft_printf.c	\
+		  ft_putchar.c	\
+		  ft_strlen.c	\
+		  ft_printf_parts.c	\
+		  main.c
+
 int ft_putstr(char *s)
 {
 	int	i;
