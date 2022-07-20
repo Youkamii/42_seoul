@@ -10,42 +10,39 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
-LIBFT = libft
-LIBFT_a = libft.a
+NAME	= libftprintf.a
 
-CC = cc
-CFLAGS = -Wall -Wextra -Werror -c
-RM = rm -f
-AR = ar
-CRS = crs
+CC		= gcc
+CFLAG	= -Wall -Wextra -Werror -D BUFFER_SIZE=42
+
+RM		= rm -f
+
+AR		= ar
+ARFLAGS	= crs
+
+INCLUDES	= ./ft_printf.h
 
 SRCS	= ft_printf.c	\
 		  ft_putchar.c	\
 		  ft_strlen.c	\
-		  ft_printf_parts.c	\
-		  main.c
+		  ft_printf_utils.c
 
-OBJS = $(SRCS:.c=.o)
+OBJS	= $(SRCS:.c=.o)
 
-all: $(NAME)
+all : $(NAME)
 
-%.o: %.c
-		$(CC) $(CFLAGS) $< -o $@
+%.o : %.c
+	$(CC) $(CFLAG) -c $< -o $@
 
-$(NAME): $(OBJS)
-		make all -C $(LIBFT)/
-		cp $(LIBFT)/$(LIBFT_a) $(NAME)
-		$(AR) $(CRS) $@ $(OBJS)
+clean :
+	$(RM) $(OBJS)
 
-clean:
-		$(RM) $(OBJS)
-		make clean -C $(LIBFT)
+fclean : clean
+	$(RM) $(NAME)
 
-fclean: clean
-		$(RM) $(NAME)
-		make fclean -C $(LIBFT)
+re : fclean all
 
-re: fclean all
+$(NAME) : $(OBJS)
+	$(AR) $(ARFLAGS) $@ $^
 
-.PHONY: fclean all clean re
+ .PHONY : all clean fclean re
