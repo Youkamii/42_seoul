@@ -21,12 +21,12 @@ int	ft_format_type(va_list ap, const char format)
 	else if (format == 'p')
 		return (ft_putptr(va_arg(ap, void *)));
 	else if (format == 'u')
-		return (ft_putnbr_u(va_arg(ap, unsigned int), "0123456789", 10));
+		return (ft_putnbr_base(va_arg(ap, unsigned int), "0123456789", 10));
 	else if (format == 'x')
-		return (ft_putnbr_u(va_arg(ap, unsigned int), \
+		return (ft_putnbr_base(va_arg(ap, unsigned int), \
 		"0123456789abcdef", 16));
 	else if (format == 'X')
-		return (ft_putnbr_u(va_arg(ap, unsigned int), \
+		return (ft_putnbr_base(va_arg(ap, unsigned int), \
 		"0123456789ABCDEF", 16));
 	else if (format == 'd' || format == 'i')
 		return (ft_putnbr(va_arg(ap, int)));

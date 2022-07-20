@@ -75,7 +75,7 @@ int	ft_putnbr_p(unsigned long int n)
 	return (i);
 }
 
-int	ft_putnbr_u(unsigned int n, char *base, int base_n)
+int	ft_putnbr_base(unsigned int n, char *base, int base_n)
 {
 	int	nbr;
 	int	i;
@@ -84,7 +84,7 @@ int	ft_putnbr_u(unsigned int n, char *base, int base_n)
 	nbr = n % base_n;
 	n /= base_n;
 	if (n >= 1)
-		i += ft_putnbr_u(n, base, base_n);
+		i += ft_putnbr_base(n, base, base_n);
 	i += ft_putchar(base[nbr]);
 	return (i);
 }
