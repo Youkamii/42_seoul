@@ -10,39 +10,35 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= libftprintf.a
-
-CC		= gcc
-CFLAG	= -Wall -Wextra -Werror -D BUFFER_SIZE=42
-
-RM		= rm -f
-
-AR		= ar
-ARFLAGS	= crs
-
-INCLUDES	= ./ft_printf.h
+CC=gcc
 
 SRCS	= ft_printf.c	\
 		  ft_putchar.c	\
 		  ft_strlen.c	\
 		  ft_printf_parts.c
 
-OBJS	= $(SRCS:.c=.o)
+OBJS=$(SRCS:.c=.o)
 
-all : $(NAME)
+NAME=libftprintf.a
 
-%.o : %.c
-	$(CC) $(CFLAG) -c $< -o $@
+HEADER=-I .
 
-clean :
-	$(RM) $(OBJS)
+CFLAG=-Wall -Werror -Wextra
 
-fclean : clean
-	$(RM) $(NAME)
+all: $(NAME)
 
-re : fclean all
+$(NAME): $(OBJS)
+	ar -rc $(NAME) $^
 
-$(NAME) : $(OBJS)
-	$(AR) $(ARFLAGS) $@ $^
+%.o: %.c
+	$(CC) $(CFLAG) -c -o $@ $< $(HEADER)
 
- .PHONY : all clean fclean re
+clean:
+	rm -f $(OBJS)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re
