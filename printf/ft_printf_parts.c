@@ -26,15 +26,6 @@ int ft_putstr(char *s)
 	return (i);
 }
 
-int	ft_putptr(void *ptr)
-{
-	int	i;
-
-	i = 0;
-	i += ft_putstr("0x");
-	i += ft_putnbr_ptr((unsigned long int)ptr);
-	return (i);
-}
 
 int	ft_putnbr(int n)
 {
@@ -60,7 +51,17 @@ int	ft_putnbr(int n)
 	return (i);
 }
 
-int	ft_putnbr_ptr(unsigned long int n)
+int	ft_putptr(void *ptr)
+{
+	int	i;
+
+	i = 0;
+	i += ft_putstr("0x");
+	i += ft_putnbr_p((unsigned long int)ptr);
+	return (i);
+}
+
+int	ft_putnbr_p(unsigned long int n)
 {
 	int	nbr;
 	int	i;
