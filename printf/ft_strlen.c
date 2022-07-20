@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_parts.c                                  :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chyeok <chyeok@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/20 07:39:26 by chyeok            #+#    #+#             */
-/*   Updated: 2022/07/20 09:56:18 by chyeok           ###   ########.fr       */
+/*   Created: 2022/07/20 09:46:52 by chyeok            #+#    #+#             */
+/*   Updated: 2022/07/20 09:49:25 by chyeok           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_putstr(char *s)
+int ft_strlen(const char *str)
 {
-	int	i;
+	size_t	len;
 
-	if (!s)
-	{
-		write(1, "(null)", 6);
-		return (6);
-	}
-	i = ft_strlen(s);
-	write(1, s, 1);
-	return (i);
+	len = 0;
+	while (str[len])
+		len++;
+	return (len);
 }
