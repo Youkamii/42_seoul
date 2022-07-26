@@ -6,7 +6,7 @@
 /*   By: chyeok <chyeok@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 07:39:26 by chyeok            #+#    #+#             */
-/*   Updated: 2022/07/20 10:08:25 by chyeok           ###   ########.fr       */
+/*   Updated: 2022/07/21 18:36:41 by chyeok           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,14 @@
 
 int ft_putstr(char *s)
 {
-	int	i;
-
 	if (!s)
 	{
 		write(1, "(null)", 6);
 		return (6);
 	}
-	i = ft_strlen(s);
-	write(1, s, 1);
-	return (i);
+	printf("\n%d", ft_strlen(s));
+	write(1, s, ft_strlen(s));
+	return (ft_strlen(s));
 }
 
 int	ft_putptr(void *ptr)
