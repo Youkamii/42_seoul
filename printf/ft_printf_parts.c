@@ -6,13 +6,10 @@
 /*   By: chyeok <chyeok@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 07:39:26 by chyeok            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/07/21 18:36:41 by chyeok           ###   ########.fr       */
-=======
-/*   Updated: 2022/07/20 15:41:24 by chyeok           ###   ########.fr       */
->>>>>>> 43953fb5ccb073a53e6db44d1af74e858ae03233
+/*   Updated: 2022/07/29 15:14:46 by chyeok           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "ft_printf.h"
 
@@ -23,7 +20,6 @@ int	ft_putstr(char *s)
 		write(1, "(null)", 6);
 		return (6);
 	}
-<<<<<<< HEAD
 	printf("\n%d", ft_strlen(s));
 	write(1, s, ft_strlen(s));
 	return (ft_strlen(s));
@@ -37,10 +33,8 @@ int	ft_putptr(void *ptr)
 	i += ft_putstr("0x");
 	i += ft_putnbr_ptr((unsigned long int)ptr);
 	return (i);
-=======
 	write(1, s, ft_strlen(s));
 	return (ft_strlen(s));
->>>>>>> 43953fb5ccb073a53e6db44d1af74e858ae03233
 }
 
 int	ft_putnbr(int n)
