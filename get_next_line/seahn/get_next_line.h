@@ -21,11 +21,11 @@
 #  define BUFFER_SIZE 1 // BUFFER_SIZE 기본값 = 1
 # endif
 
-size_t		ft_strlen(const char *s);
+size_t		ft_strlen(const char *s); // 문자열 길이를 알게 한다
 char		*ft_strchr(const char *s, int c); // s에서 c가 있는 메모리 주소를 반환한다
 char		*ft_strdup(const char *s1); // 문자열 복사해서 메모리 할당한다
 char		*ft_strjoin(char const *s1, char const *s2); // s1s2를 만든다
-char		*ft_substr(char const *s, unsigned int start, size_t len);
-char		*get_next_line(int fd);
+char		*ft_substr(char const *s, unsigned int start, size_t len); // start부터 len길이 만큼 복붙한다 원본 건들지 않는다
+char		*get_next_line(int fd); // 우리의 함수
 
 #endif
