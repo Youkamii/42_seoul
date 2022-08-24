@@ -1,7 +1,0 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory `/Users/liachoi/box'
-gcc -Wall -Wextra -Werror -D BUFFER_SIZE=42  -c ft_printf.c -o ft_printf.o
-gcc -Wall -Wextra -Werror -D BUFFER_SIZE=42  -c ft_printf_utils.c -o ft_printf_utils.o
-ar crs libftprintf.a ft_printf.o ft_printf_utils.o
-make: Leaving directory `/Users/liachoi/box'
- 
