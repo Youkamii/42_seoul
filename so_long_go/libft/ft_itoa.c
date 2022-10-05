@@ -3,59 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jashin <jashin@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: chyeok <chyeok@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/18 19:58:28 by jashin            #+#    #+#             */
-/*   Updated: 2022/10/01 16:25:23 by jashin           ###   ########.fr       */
+/*   Created: 2022/05/14 14:45:04 by chyeok            #+#    #+#             */
+/*   Updated: 2022/05/20 06:05:33 by chyeok           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
-static int	nb_len(long int n)
+size_t	itoa_len(long int nbr)
 {
-	int	len;
+	size_t	len;
 
 	len = 0;
-	if (n == 0)
-		len = 1;
-	if (n < 0)
+	if (!nbr)
+		return (1);
+	else if (nbr < 0)
+		len++;
+	while (nbr)
 	{
-		n *= -1;
-		len ++;
-	}
-	while (n > 0)
-	{
-		n = n / 10;
+		nbr /= 10;
 		len++;
 	}
 	return (len);
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa(int nbr)
 {
-	int			len;
 	char		*str;
-	long int	nbr;
+	size_t		len;
+	long long	res;
 
-	nbr = n;
-	len = nb_len(nbr);
-	str = malloc ((len) * sizeof(char) + 1);
+	len = itoa_len(nbr);
+	res = (long long)nbr;
+	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!str)
-		return (NULL);
-	str[len] = '\0';
-	len = len - 1;
-	if (nbr == 0)
-		str[0] = '0';
-	if (nbr < 0)
+		return (0);
+	if (res < 0)
 	{
-		nbr = nbr * -1;
 		str[0] = '-';
+		res *= -1;
 	}
-	while (nbr > 0)
+	else if (!res)
+		str[0] = '0';
+	str[len] = 0;
+	len -= 1;
+	while (res)
 	{
-		str[len] = (nbr % 10) + '0';
-		nbr = nbr / 10;
+		str[len] = res % 10 + '0';
+		res /= 10;
 		len--;
 	}
 	return (str);

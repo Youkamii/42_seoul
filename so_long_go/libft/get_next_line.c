@@ -3,117 +3,89 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jashin <jashin@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: chyeok <chyeok@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/15 17:52:14 by jashin            #+#    #+#             */
-/*   Updated: 2022/10/01 16:24:09 by jashin           ###   ########.fr       */
+/*   Created: 2022/08/22 20:31:15 by chyeok            #+#    #+#             */
+/*   Updated: 2022/08/22 20:31:17 by chyeok           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	is_endl(char *str)
+static char	*reading(int fd, char *buffer, char *backup_line)
 {
-	int	i;
+	int		cur;
+	char	*tmp;
 
-	i = 0;
-	while (str[i] != '\n' && str[i] != '\0')
-		i++;
-	if (str[i] == '\n')
-		return (1);
-	return (0);
+	cur = 1;
+	while (cur)
+	{
+		cur = read(fd, buffer, BUFFER_SIZE);
+		if (cur < 0)
+			return (0);
+		else if (cur == 0)
+			break ;
+		buffer[cur] = '\0';
+		if (!backup_line)
+			backup_line = ft_strdup("");
+		tmp = backup_line;
+		backup_line = ft_strjoin(tmp, buffer);
+		if (!backup_line)
+			return (NULL);
+		free(tmp);
+		tmp = NULL;
+		if (ft_strchr(buffer, '\n'))
+			break ;
+	}
+	return (backup_line);
 }
 
-static char	*get_line(char **buffer_backup)
+static char	*dvd_line(char *line)
 {
-	char	*line;
 	int		i;
+	char	*res;
 
 	i = 0;
-	if (!buffer_backup)
-		return (NULL);
-	while ((*buffer_backup)[i] != '\0' && (*buffer_backup)[i] != '\n')
+	while (line[i] != '\n' && line[i] != '\0')
 		i++;
-	line = ft_substr(*buffer_backup, 0, i + is_endl(*buffer_backup));
-	if (!line)
+	if (line[i] == '\0')
+		return (0);
+	else
 	{
-		free(line);
+		res = ft_substr(line, i + 1, ft_strlen(line) - i);
+		if (!res)
+			return (NULL);
+	}
+	if (res[0] == '\0')
+	{
+		free(res);
+		res = NULL;
 		return (NULL);
 	}
-	return (line);
-}
-
-static char	*get_backup(char **buffer_backup)
-{
-	char	*backup;
-	int		i;
-
-	i = 0;
-	if (!buffer_backup)
-		return (NULL);
-	while ((*buffer_backup)[i] != '\0' && (*buffer_backup)[i] != '\n')
-		i++;
-	if ((*buffer_backup)[i] == '\0')
-	{
-		free(*buffer_backup);
-		return (NULL);
-	}
-	backup = ft_substr(*buffer_backup, i + 1, ft_strlen(*buffer_backup) - i);
-	if (!backup)
-	{
-		free(backup);
-		return (NULL);
-	}
-	free(*buffer_backup);
-	return (backup);
-}
-
-static int	read_file(int fd, char **buffer, char **buffer_backup, char **line)
-{
-	int		bytes_read;
-	char	*holder;
-
-	bytes_read = 1;
-	while (is_endl(*buffer_backup) != 1 && bytes_read > 0)
-	{
-		bytes_read = read(fd, *buffer, BUFFER_SIZE);
-		(*buffer)[bytes_read] = '\0';
-		holder = *buffer_backup;
-		*buffer_backup = ft_strjoin(holder, *buffer);
-		free(holder);
-	}
-	free(*buffer);
-	*line = get_line(buffer_backup);
-	if (**line == '\0')
-	{
-		free(*line);
-		*line = NULL;
-	}
-	*buffer_backup = get_backup(buffer_backup);
-	return (bytes_read);
+	line[i + 1] = '\0';
+	return (res);
 }
 
 char	*get_next_line(int fd)
 {
-	char		*buffer;
-	static char	*buffer_backup;
 	char		*line;
-	int			bytes_read;
+	char		*buffer;
+	static char	*backup_line[OPEN_MAX];
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
 		return (NULL);
-	if (read(fd, buffer, 0) < 0)
+	line = reading(fd, buffer, backup_line[fd]);
+	free(buffer);
+	buffer = NULL;
+	if (!line)
 	{
-		free(buffer);
+		free(backup_line[fd]);
+		backup_line[fd] = NULL;
 		return (NULL);
 	}
-	if (!buffer_backup)
-		buffer_backup = ft_strdup("");
-	bytes_read = read_file(fd, &buffer, &buffer_backup, &line);
-	if (bytes_read == 0 && !line)
-		return (NULL);
+	backup_line[fd] = dvd_line(line);
 	return (line);
 }
