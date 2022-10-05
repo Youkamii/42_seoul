@@ -6,7 +6,7 @@
 #    By: chyeok <chyeok@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/14 14:21:00 by chyeok            #+#    #+#              #
-#    Updated: 2022/05/25 18:16:44 by chyeok           ###   ########.fr        #
+#    Updated: 2022/10/06 00:42:48 by chyeok           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ all: $(NAME)
 
 $(NAME): $(OBJECTS)
 	ar -rcs $(NAME) $(OBJECTS)
-	
+
 $(OBJECTS): $(SRC)
 	$(CC) $(CFLAGS) -c $(SRC)
 
