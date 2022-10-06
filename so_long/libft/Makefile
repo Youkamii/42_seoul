@@ -6,13 +6,12 @@
 #    By: chyeok <chyeok@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/14 14:21:00 by chyeok            #+#    #+#              #
-#    Updated: 2022/05/25 18:16:44 by chyeok           ###   ########.fr        #
+#    Updated: 2022/10/06 00:42:48 by chyeok           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
+
 SRC =	ft_strdup.c \
 		ft_strjoin.c \
 		ft_substr.c \
@@ -23,6 +22,9 @@ SRC =	ft_strdup.c \
 		get_next_line.c
 
 OBJECTS = $(SRC:.c=.o)
+
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
