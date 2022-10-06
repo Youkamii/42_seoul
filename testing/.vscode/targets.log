@@ -6,11 +6,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
- 
-make: *** No rule to make target `all'.  Stop.
 
-
-# Make data base, printed on Thu Oct  6 00:42:52 2022
+# Make data base, printed on Tue Oct  4 09:00:52 2022
 
 # Variables
 
@@ -25,7 +22,7 @@ make: *** No rule to make target `all'.  Stop.
 # automatic
 @F = $(notdir $@)
 # makefile
-CURDIR := /Users/liachoi/42_seoul
+CURDIR := /Users/liachoi/42_seoul/testing
 # makefile
 SHELL = /bin/sh
 # environment
@@ -53,7 +50,7 @@ SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.hlL3a6S4HQ/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
-PWD = /Users/liachoi/42_seoul
+PWD = /Users/liachoi/42_seoul/testing
 # environment
 HOMEBREW_CELLAR = /opt/homebrew/Cellar
 # environment
@@ -89,7 +86,6 @@ MAKECMDGOALS := all
 # environment
 SHLVL = 1
 # default
- 
 MAKE_VERSION := 3.81
 # environment
 USER = liachoi
@@ -160,10 +156,9 @@ VSCODE_PID = 1748
 
 # Directories
 
-# . (device 16777231, inode 2486034): 13 files, no impossibilities.
- 
+# . (device 16777231, inode 2486402): 3 files, no impossibilities.
 
-# 13 files, no impossibilities in 1 directories.
+# 3 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -235,6 +230,8 @@ GNUmakefile:
 # strcache size: total = 0 / max = 0 / min = 4096 / avg = 0
 # strcache free: total = 0 / max = 0 / min = 4096 / avg = 0
 
-# Finished Make data base on Thu Oct  6 00:42:52 2022
+# Finished Make data base on Tue Oct  4 09:00:52 2022
 
  
+make: *** No rule to make target `all'.  Stop.
+
