@@ -18,10 +18,12 @@ void	recv_sig(int sig)
 			tmp <<= 1;
 		}
 	}
-	else if (bit == 8)
+	if (bit == 8)
+	{
 		write(1, &tmp, 1);
-	bit = 0;
-	tmp = 0;
+		bit = 0;
+		tmp = 0;
+	}
 }
 
 int	main(void)
