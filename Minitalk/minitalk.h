@@ -6,7 +6,7 @@
 
 # include "./libft/libft.h"
 
-void	recv_sig(int sig);
+void	recv_sig(int sign);
 
 void	ft_signal(int pid, char *str, int strlen);
 
