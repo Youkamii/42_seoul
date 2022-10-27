@@ -12,7 +12,7 @@
 
 #include "minitalk.h"
 
-static void	ft_signal(int sign)
+static void	recv_sign(int sign)
 {
 	static int	tmp = 0;
 	static int	bit = 0;
