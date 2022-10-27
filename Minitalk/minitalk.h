@@ -18,7 +18,7 @@
 
 # include "./libft/libft.h"
 
-static void	recv_sign(int sign)
+static void	recv_sign(int sign);
 
 void	ft_signal(int pid, char *str, int strlen);
 
