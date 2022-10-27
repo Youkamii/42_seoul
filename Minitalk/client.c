@@ -7,7 +7,7 @@ void	ft_signal(int pid, char *str, int strlen)
 	int	tmp;
 
 	byte = 0;
-	while (byte < len)
+	while (byte < strlen)
 	{
 		bit = 0;
 		while (bit < 8)
