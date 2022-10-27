@@ -6,7 +6,7 @@
 /*   By: chyeok <chyeok@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 19:07:53 by chyeok            #+#    #+#             */
-/*   Updated: 2022/10/27 19:07:56 by chyeok           ###   ########.fr       */
+/*   Updated: 2022/10/27 19:09:26 by chyeok           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_signal(int pid, char *str, int strlen)
 	}
 }
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	pid_t	pid;
 	char	*str;
