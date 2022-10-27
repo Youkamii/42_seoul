@@ -1,26 +1,25 @@
 #include "minitalk.h"
 
-void	recv_sig(int sig)
+void	recv_sig(int sign)
 {
 	static char	tmp;
 	static int	bit;
 
-	if (sig == SIGUSR1)
+	bit = 0;
+	if (sign == SIGUSR1)
 	{
-		tmp |= 0;
-		if (bit < 7)
-			tmp <<= 1;
+		tmp <<= 1;
+		tmp += 1;
+		bit++;
 	}
-	else if (sig == SIGUSR2)
+	else if (sign == SIGUSR2)
 	{
-		tmp |= 1;
-		if (bit < 7)
-			tmp <<= 1;
+		tmp <<= 1;
+		bit++;
 	}
-	bit++;
 	if (bit == 8)
 	{
-		write(1, &tmp, 1);
+		ft_putchar_fd(tmp, 1);
 		bit = 0;
 		tmp = 0;
 	}
