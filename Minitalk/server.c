@@ -6,7 +6,7 @@
 /*   By: chyeok <chyeok@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 19:08:02 by chyeok            #+#    #+#             */
-/*   Updated: 2022/10/27 19:08:04 by chyeok           ###   ########.fr       */
+/*   Updated: 2022/10/27 19:11:03 by chyeok           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 void	recv_sig(int sign)
 {
-	static char	tmp;
-	static int	bit;
+	static char	tmp = 0;
+	static int	bit = 0;
 
-	bit = 0;
 	if (sign == SIGUSR1)
 	{
 		tmp <<= 1;
