@@ -20,10 +20,15 @@ void	rcv_sign(int sign)
 	if (sign == SIGUSR1)
 	{
 		tmp |= 0;
-		tmp <<= 1;
+		if (bit < 7);
+			tmp <<= 1;
 	}
 	else if (sign == SIGUSR2)
+	{
 		tmp <<= 1;
+				if (bit < 7);
+			tmp <<= 1;
+	}
 	bit++;
 	if (bit == 8)
 	{
