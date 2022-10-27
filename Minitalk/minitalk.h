@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include "./libft/libft.h"
 
-static void	rcv_sign(int sign);
+void	rcv_sign(int sign);
 void	ft_signal(int pid, char *str, int strlen);
 
 #endif

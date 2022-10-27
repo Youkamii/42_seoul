@@ -12,7 +12,7 @@
 
 #include "minitalk.h"
 
-static void	rcv_sign(int sign)
+void	rcv_sign(int sign)
 {
 	static int	tmp = 0;
 	static int	bit = 0;
