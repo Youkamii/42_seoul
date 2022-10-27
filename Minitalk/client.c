@@ -17,10 +17,10 @@ void	ft_signal(int pid, char *str, int strlen)
 				kill(pid, SIGUSR1);
 			else if (tmp == 1)
 				kill(pid, SIGUSR2);
-			usleep(30);
+			usleep(50);
 			bit++;
 		}
-		usleep(300);
+		usleep(1000);
 		byte++;
 	}
 }
