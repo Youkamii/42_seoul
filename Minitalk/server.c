@@ -14,7 +14,7 @@
 
 void	recv_sig(int sign)
 {
-	static char	tmp = 0;
+	static int	tmp = 0;
 	static int	bit = 0;
 
 	if (sign == SIGUSR1)
