@@ -20,7 +20,7 @@ void	ft_signal(int pid, char *str, int strlen)
 			usleep(30);
 			bit++;
 		}
-		usleep(30);
+		usleep(300);
 		byte++;
 	}
 }
