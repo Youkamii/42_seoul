@@ -5,19 +5,19 @@ void	recv_sig(int sig)
 	static char	tmp;
 	static int	bit;
 
-	if (bit < 7)
+	if (sig == SIGUSR1)
 	{
-		if (sig == SIGUSR1)
-		{
-			tmp |= 0;
+		tmp |= 0;
+		if (bit < 7)
 			tmp <<= 1;
-		}
-		else if (sig == SIGUSR2)
-		{
-			tmp |= 1;
-			tmp <<= 1;
-		}
 	}
+	else if (sig == SIGUSR2)
+	{
+		tmp |= 1;
+		if (bit < 7)
+			tmp <<= 1;
+	}
+	bit++;
 	if (bit == 8)
 	{
 		write(1, &tmp, 1);
