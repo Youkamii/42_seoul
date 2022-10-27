@@ -24,7 +24,7 @@ void	rcv_sign(int sign)
 	}
 	else if (sign == SIGUSR2)
 	{
-		tmp |= 1;
+		tmp = 1;
 		if (bit < 7)
 			tmp <<= 1;
 	}
