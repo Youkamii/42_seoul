@@ -14,20 +14,17 @@
 
 void	rcv_sign(int sign)
 {
-	static int	tmp = 0;
+	static char	tmp = 0;
 	static int	bit = 0;
 
 	if (sign == SIGUSR1)
 	{
 		tmp <<= 1;
 		tmp += 1;
-		bit++;
 	}
 	else if (sign == SIGUSR2)
-	{
 		tmp <<= 1;
-		bit++;
-	}
+	bit++;
 	if (bit == 8)
 	{
 		write(1, &tmp, 1);
