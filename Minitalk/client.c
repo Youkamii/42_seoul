@@ -49,7 +49,7 @@ int	main(int argc, char *argv[])
 		ft_putstr_fd("Argument Error\n", 1);
 		exit(1);
 	}
-	else if (pid < 100 || pid > 99998)
+	else if (pid <= 100 || pid >= 99998)
 	{
 		ft_putstr_fd("Pid Error\n", 1);
 		exit(1);
