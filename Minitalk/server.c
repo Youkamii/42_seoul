@@ -40,8 +40,8 @@ int	main(void)
 {
 	ft_putnbr_fd(getpid(), 1);
 	ft_putstr_fd(" : getpid\n", 1);
-	signal(SIGUSR1, recv_sign);
-	signal(SIGUSR2, recv_sign);
+	signal(SIGUSR1, rcv_sign);
+	signal(SIGUSR2, rcv_sign);
 	while (1)
 		pause();
 }
