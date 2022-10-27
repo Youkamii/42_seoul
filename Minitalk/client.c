@@ -39,7 +39,7 @@ void	ft_signal(int pid, char *str, int strlen)
 
 int	main(int argc, char *argv[])
 {
-	pid_t	pid;
+	int		pid;
 	char	*str;
 	int		strlen;
 
