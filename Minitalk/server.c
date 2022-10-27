@@ -14,8 +14,8 @@
 
 void	rcv_sign(int sign)
 {
-	static char	tmp = 0;
-	static int	bit = 0;
+	static char	tmp;
+	static int	bit;
 
 	if (sign == SIGUSR1)
 	{
