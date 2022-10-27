@@ -29,7 +29,7 @@ void	rcv_sign(int sign)
 			tmp <<= 1;
 	}
 	bit++;
-	if (bit == 8)
+	if (bit == 7)
 	{
 		write(1, &tmp, 1);
 		bit = 0;
