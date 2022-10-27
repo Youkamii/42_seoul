@@ -1,6 +1,6 @@
 #include "minitalk.h"
 
-void	ft_signal(int pid, char *str, int len)
+void	ft_signal(int pid, char *str, int strlen)
 {
 	int	byte;
 	int	bit;
@@ -20,7 +20,7 @@ void	ft_signal(int pid, char *str, int len)
 			usleep(30);
 			bit++;
 		}
-		usleep(300);
+		usleep(30);
 		byte++;
 	}
 }
