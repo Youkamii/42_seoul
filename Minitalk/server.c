@@ -30,7 +30,7 @@ void	rcv_sign(int sign)
 	}
 	if (bit == 8)
 	{
-		ft_putchar_fd(tmp, 1);
+		write(1, &tmp, 1);
 		bit = 0;
 		tmp = 0;
 	}
