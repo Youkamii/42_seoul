@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 	char	*str;
 	int		strlen;
 
-	pid = ft_atoi(argv[1]);
+	pid = argv[1];
 	if (argc != 3)
 	{
 		ft_putstr_fd("Argument Error\n", 1);
