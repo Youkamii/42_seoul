@@ -14,18 +14,18 @@
 
 void	ft_signal(int pid, char *str, int strlen)
 {
-	int	byte;
+	int	count;
 	int	bit;
-	int	tmp;
+	int	sign;
 
-	byte = 0;
-	while (byte < strlen)
+	count = 0;
+	while (count < strlen)
 	{
 		bit = 0;
 		while (bit < 8)
 		{
-			tmp = str[byte] >> (7 - bit) & 1;
-			if (tmp == 0)
+			sign = str[count] >> (7 - bit) & 1;
+			if (sign == 0)
 				kill(pid, SIGUSR1);
 			else
 				kill(pid, SIGUSR2);
@@ -33,7 +33,7 @@ void	ft_signal(int pid, char *str, int strlen)
 			bit++;
 		}
 		usleep(1000);
-		byte++;
+		count++;
 	}
 }
 
