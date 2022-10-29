@@ -6,7 +6,7 @@
 /*   By: chyeok <chyeok@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 19:07:53 by chyeok            #+#    #+#             */
-/*   Updated: 2022/10/28 17:47:31 by chyeok           ###   ########.fr       */
+/*   Updated: 2022/10/29 12:35:55 by chyeok           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	main(int argc, char *argv[])
 		exit(1);
 	}
 	pid = ft_atoi(argv[1]);
-	if (pid <= 100 || pid >= 99998)
+	if (pid < 100 || pid > 99998)
 	{
 		ft_putstr_fd("Pid Error\n", 1);
 		exit(1);
