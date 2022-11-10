@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chyeok <chyeok@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: chyeok <chyeok@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 12:18:07 by chyeok            #+#    #+#             */
-/*   Updated: 2022/11/10 20:36:35 by chyeok           ###   ########.fr       */
+/*   Updated: 2022/11/10 23:01:16 by chyeok           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,35 +15,35 @@
 
 void	ft_sort_three(t_stack *stack)
 {
-	int	num1;
-	int	num2;
-	int	num3;
+	int	i;
+	int	j;
+	int	k;
 
-	num1 = stack->a_top->content;
-	num2 = stack->a_top->next->content;
-	num3 = stack->a_bottom->content;
-	if (num1 > num2 && num2 > num3)
+	i = stack->a_top->content;
+	j = stack->a_top->next->content;
+	k = stack->a_bottom->content;
+	if (i > j && j > k)
 	{
 		sa(stack);
 		rra(stack);
 	}
-	else if (num1 > num3 && num3 > num2)
+	else if (i > k && k > j)
 		ra(stack);
-	else if (num2 > num3 && num3 > num1)
+	else if (j > k && k > i)
 	{
 		sa(stack);
 		ra(stack);
 	}
-	else if (num3 > num1 && num1 > num2)
+	else if (k > i && i > j)
 		sa(stack);
-	else if (num2 > num1 && num1 > num3)
+	else if (j > i && i > k)
 		rra(stack);
 }
 
 void	ft_sort_big(t_stack *stack)
 {
-	int	a;
-	int	b;
+	int	i;
+	int	j;
 
 	ft_sort_three_division(stack);
 	while (stack->a_size > 3)
@@ -55,12 +55,12 @@ void	ft_sort_big(t_stack *stack)
 		ft_sort_three(stack);
 	while (stack->b_size)
 	{
-		a = 0;
-		b = 0;
-		get_min_rotate(stack, &a, &b);
-		ft_rotate_same(stack, &a, &b);
-		ft_rotate_a(stack, a);
-		ft_rotate_b(stack, b);
+		i = 0;
+		j = 0;
+		get_min_rotate(stack, &i, &j);
+		ft_rotation_same(stack, &i, &j);
+		ft_rotation_a(stack, i);
+		ft_rotation_b(stack, j);
 		pa(stack);
 	}
 	ft_sort_big_last(stack);

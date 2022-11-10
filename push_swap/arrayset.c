@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arrayset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chyeok <chyeok@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: chyeok <chyeok@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 12:17:20 by chyeok            #+#    #+#             */
-/*   Updated: 2022/11/10 20:40:58 by chyeok           ###   ########.fr       */
+/*   Updated: 2022/11/10 22:47:37 by chyeok           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,44 +44,44 @@ int	get_size(int ac, char *av[])
 int	*av_to_array(int ac, char *av[], int size)
 {
 	int		ac_index;
-	int		array_index;
-	int		*new_array;
+	int		array_idx;
+	int		*new_arr;
 	char	**split_str;
 
 	ac_index = 1;
-	array_index = 0;
-	new_array = (int *)malloc(sizeof(int) * size);
-	if (!new_array)
+	array_idx = 0;
+	new_arr = (int *)malloc(sizeof(int) * size);
+	if (!new_arr)
 		throw_error(1);
 	while (ac_index < ac)
 	{
 		split_str = ft_split(av[ac_index], ' ');
-		split_str_to_int(new_array, &array_index, split_str);
+		split_str_to_int(new_arr, &array_idx, split_str);
 		free_all(split_str);
 		ac_index++;
 	}
-	new_array[array_index] = '\0';
-	return (new_array);
+	new_arr[array_idx] = '\0';
+	return (new_arr);
 }
 
 void	array_to_stack(t_stack *info, int *int_array, int size)
 {
-	t_num	*new_node;
+	t_num	*new_nodes;
 	int		index;
 
 	index = 0;
 	while (index < size)
 	{
-		new_node = init_num();
+		new_nodes = init_num();
 		info->a_size += 1;
 		info->a_bottom->content = (int)int_array[index];
-		info->a_bottom->next = new_node;
-		new_node->prev = info->a_bottom;
-		info->a_bottom = new_node;
+		info->a_bottom->next = new_nodes;
+		new_nodes->prev = info->a_bottom;
+		info->a_bottom = new_nodes;
 		index++;
 	}
 	info->a_bottom = info->a_bottom->prev;
-	free(new_node);
+	free(new_nodes);
 }
 
 void	check_sorted(int *int_array, int size, int index)

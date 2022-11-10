@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_arrayset.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chyeok <chyeok@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: chyeok <chyeok@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 12:18:43 by chyeok            #+#    #+#             */
-/*   Updated: 2022/11/10 20:36:50 by chyeok           ###   ########.fr       */
+/*   Updated: 2022/11/10 22:57:59 by chyeok           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,23 @@
 
 int	split_str_count(char **split_str)
 {
-	int	index;
+	int	idx;
 
-	index = 0;
-	while (split_str[index])
-		index++;
-	return (index);
+	idx = 0;
+	while (split_str[idx])
+		idx++;
+	return (idx);
 }
 
 void	free_all(char **split_strs)
 {
-	int	index;
+	int	idx;
 
-	index = 0;
-	while (split_strs[index])
+	idx = 0;
+	while (split_strs[idx])
 	{
-		free(split_strs[index]);
-		index++;
+		free(split_strs[idx]);
+		idx++;
 	}
 	free(split_strs);
 }
@@ -67,14 +67,14 @@ int	special_atoi(const char *str)
 void	split_str_to_int(int *int_array, int *arr_index, char **split_strs)
 {
 	int	temp_number;
-	int	index;
+	int	idx;
 
-	index = 0;
-	while (split_strs[index])
+	idx = 0;
+	while (split_strs[idx])
 	{
-		temp_number = special_atoi(split_strs[index]);
+		temp_number = special_atoi(split_strs[idx]);
 		int_array[*arr_index] = temp_number;
 		(*arr_index)++;
-		index++;
+		idx++;
 	}
 }

@@ -2,17 +2,16 @@ NAME		= push_swap
 LIBFT		= libft
 LIBFT_LIB	= libft.a
 
-SRCS		= push_swap.c	\
-			utils_sspa.c	\
-			utils_rr.c	\
-			utils_rrr.c	\
-			arrayset.c	\
+SRCS		= push_swap.c		\
+			utils_rr.c			\
+			utils_rrr.c			\
+			utils_sspa.c		\
+			arrayset.c			\
+			sort.c				\
 			utils_arrayset.c	\
-			sort.c	\
-			sort_utils.c	\
-			sort_rotate.c	\
-			sort_rotate_utils.c
-
+			sort_utils.c		\
+			sort_rotate_utils.c	\
+			sort_rotate.c		\
 
 OBJS		= $(SRCS:%.c=%.o)
 
@@ -28,7 +27,6 @@ $(NAME)		:	$(OBJS)
 
 %.o			:	%.c
 		cc $(FLAGS) -c $^ -I./ -o $@
-
 
 clean		:
 		rm -f $(OBJS)

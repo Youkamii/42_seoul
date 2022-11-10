@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_rotate_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chyeok <chyeok@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: chyeok <chyeok@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 12:18:24 by chyeok            #+#    #+#             */
-/*   Updated: 2022/11/10 20:35:50 by chyeok           ###   ########.fr       */
+/*   Updated: 2022/11/10 22:52:57 by chyeok           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 
 int	get_stack_min(t_num *top)
 {
-	int	ret;
+	int	retrn;
 
-	ret = top->content;
+	retrn = top->content;
 	while (top)
 	{
-		if (ret > top->content)
-			ret = top->content;
+		if (retrn > top->content)
+			retrn = top->content;
 		top = top->next;
 	}
-	return (ret);
+	return (retrn);
 }
 
 int	get_stack_max(t_num *stack)

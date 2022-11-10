@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_rotate.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chyeok <chyeok@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: chyeok <chyeok@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 12:18:15 by chyeok            #+#    #+#             */
-/*   Updated: 2022/11/10 20:35:52 by chyeok           ###   ########.fr       */
+/*   Updated: 2022/11/10 23:00:34 by chyeok           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	set_a_location(int num, t_stack *stack)
 	return (ret);
 }
 
-void	ft_rotate_same(t_stack *stack, int *a, int *b)
+void	ft_rotation_same(t_stack *stack, int *a, int *b)
 {
 	while (*a > 0 && *b > 0)
 	{
@@ -42,7 +42,7 @@ void	ft_rotate_same(t_stack *stack, int *a, int *b)
 	}
 }
 
-void	ft_rotate_a(t_stack *stack, int a)
+void	ft_rotation_a(t_stack *stack, int a)
 {
 	while (a)
 	{
@@ -59,7 +59,7 @@ void	ft_rotate_a(t_stack *stack, int a)
 	}
 }
 
-void	ft_rotate_b(t_stack *stack, int b)
+void	ft_rotation_b(t_stack *stack, int b)
 {
 	while (b)
 	{
