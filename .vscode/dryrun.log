@@ -1,0 +1,5 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory `/Users/liachoi/42_seoul'
+g++ -std=c++11 -Wall -o myapp  
+make: Leaving directory `/Users/liachoi/42_seoul'
+ 
