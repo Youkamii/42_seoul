@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: chyeok <chyeok@student.42seoul.kr>         +#+  +:+       +#+         #
+#    By: chyeok <chyeok@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/14 14:21:00 by chyeok            #+#    #+#              #
-#    Updated: 2022/05/20 03:17:50 by chyeok           ###   ########.fr        #
+#    Updated: 2023/01/10 17:39:32 by chyeok           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,24 +47,37 @@ SRCS					= ft_atoi.c \
 	ft_toupper.c \
 	ft_striteri.c
 
-OBJS					= $(SRCS:%.c=%.o)
+SRCS_B = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
+OBJS = $(SRCS:.c=.o)
+OBJS_B = $(SRCS_B:.c=.o)
+AR = ar
+ARFLAGS = -rcs
+RM = rm
+RMFLAGS = -f
 
-FLAGS					= -Wall -Wextra -Werror
+ifdef WITH_BONUS
+	TOTAL_OBJS = $(OBJS) $(OBJS_B)
+else
+	TOTAL_OBJS = $(OBJS)
+endif
 
-$(NAME)		:	$(OBJS)
-			gcc $(FLAGS) -c $(SRCS) -I./
-			ar rc $(NAME) $(OBJS)
+all: $(NAME)
 
-all	:	$(NAME)
+clean:
+	$(RM) $(RMFLAGS) -f $(OBJS) $(OBJS_B)
 
-clean	:
-		rm -f $(OBJS)
+fclean: clean
+	$(RM) $(RMFLAGS) $(NAME)
 
-fclean	:	clean
-		rm -f $(NAME)
+re: fclean all
 
-re	:	
-		make fclean
-		make all
+bonus :
+	make WITH_BONUS=1
 
-.PHONY	:	all clean fclean re
+$(NAME): $(TOTAL_OBJS)
+	$(AR) $(ARFLAGS) $@ $^
+
+%.o : %.c
+	$(CC) $(CFLAGS) -c $<
+
+.PHONY: all clean fclean re bonus
