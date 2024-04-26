@@ -2,7 +2,7 @@ NAME		= push_swap
 LIBFT		= libft
 LIBFT_LIB	= libft.a
 
-SRCS		= push_swap.c		\
+SRCS		= push_swap.c		\ 
 			utils_rr.c			\
 			utils_rrr.c			\
 			utils_sspa.c		\
